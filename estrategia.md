@@ -1,6 +1,6 @@
 # Estrategia de pruebas – BiblioUni
 
-> **Nota:** el "gancho innovador" se asume como un **módulo de recomendación de materiales y alertas de vencimiento de préstamos**. Reemplaza esta sección si el tuyo es otro.
+> **Nota:** el "gancho innovador" se asume como un **módulo de recomendación de materiales y alertas de vencimiento de préstamos**
 
 ## 1. Objetivo y alcance
 Definir qué, cómo y con qué nivel de profundidad se probará BiblioUni (sistema de gestión de préstamos de material bibliográfico, construido con Spring Boot y API REST), para asegurar la calidad antes de las Unidades 2 y 3.
