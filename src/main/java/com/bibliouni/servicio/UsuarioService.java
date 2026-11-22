@@ -12,6 +12,9 @@ public class UsuarioService {
     }
 
     public Usuario registrar(Usuario usuario) {
+        if (usuario.getCorreo() == null || !usuario.getCorreo().matches("^[\\w.+-]+@[\\w-]+(\\.[\\w-]+)+$")) {
+            throw new IllegalArgumentException("El correo no tiene un formato válido");
+        }
         return usuarioRepository.guardar(usuario);
     }
 }
