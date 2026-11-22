@@ -1,5 +1,6 @@
 package com.bibliouni.servicio;
 
+import com.bibliouni.excepcion.LimitePrestamosExcedidoException;
 import com.bibliouni.excepcion.MaterialNoDisponibleException;
 import com.bibliouni.excepcion.RecursoNoEncontradoException;
 import com.bibliouni.modelo.Material;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -22,6 +24,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.never;
@@ -137,5 +140,35 @@ class PrestamoServiceTest {
         // Act + Assert
         assertThrows(RecursoNoEncontradoException.class,
                 () -> prestamoService.calcularMulta(999L, LocalDate.of(2026, 11, 15)));
+    }
+
+    @ParameterizedTest
+    @ValueSource(longs = {3, 4, 10})
+    void registrarPrestamo_cuandoSuperaElLimiteDePrestamos_lanzaExcepcion(long prestamosActivos) {
+        // Arrange
+        when(usuarioRepository.buscarPorId(1L)).thenReturn(Optional.of(usuario));
+        when(prestamoRepository.contarActivosPorUsuario(1L)).thenReturn(prestamosActivos);
+
+        // Act + Assert
+        assertThrows(LimitePrestamosExcedidoException.class,
+                () -> prestamoService.registrarPrestamo(1L, 10L, FECHA_PRESTAMO));
+        verify(prestamoRepository, never()).guardar(any());
+    }
+
+    @Test
+    void registrarPrestamo_cuandoTieneDosPrestamosActivos_permiteTercero() {
+        // Arrange
+        Material material = new Material(10L, "Cálculo diferencial", "Marta Ruiz", "978-0000000003", 2);
+        when(usuarioRepository.buscarPorId(1L)).thenReturn(Optional.of(usuario));
+        when(prestamoRepository.contarActivosPorUsuario(1L)).thenReturn(2L);
+        when(materialRepository.buscarPorId(10L)).thenReturn(Optional.of(material));
+        when(prestamoRepository.guardar(any(Prestamo.class))).thenAnswer(invocacion -> invocacion.getArgument(0));
+
+        // Act
+        Prestamo resultado = prestamoService.registrarPrestamo(1L, 10L, FECHA_PRESTAMO);
+
+        // Assert
+        assertNotNull(resultado);
+        verify(prestamoRepository).guardar(any(Prestamo.class));
     }
 }
