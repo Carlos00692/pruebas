@@ -1,5 +1,6 @@
 package com.bibliouni.servicio;
 
+import com.bibliouni.excepcion.LimitePrestamosExcedidoException;
 import com.bibliouni.excepcion.MaterialNoDisponibleException;
 import com.bibliouni.excepcion.RecursoNoEncontradoException;
 import com.bibliouni.modelo.Material;
@@ -31,6 +32,9 @@ public class PrestamoService {
     public Prestamo registrarPrestamo(Long usuarioId, Long materialId, LocalDate fechaPrestamo) {
         usuarioRepository.buscarPorId(usuarioId)
                 .orElseThrow(() -> new RecursoNoEncontradoException("Usuario no encontrado: " + usuarioId));
+        if (prestamoRepository.contarActivosPorUsuario(usuarioId) >= 3) {
+            throw new LimitePrestamosExcedidoException("El usuario ya tiene 3 préstamos activos");
+        }
         Material material = materialRepository.buscarPorId(materialId)
                 .orElseThrow(() -> new RecursoNoEncontradoException("Material no encontrado: " + materialId));
         if (!material.estaDisponible()) {
