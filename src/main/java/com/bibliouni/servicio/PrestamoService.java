@@ -14,6 +14,7 @@ import java.time.temporal.ChronoUnit;
 
 public class PrestamoService {
 
+    static final int LIMITE_PRESTAMOS_ACTIVOS = 3;
     static final int DIAS_DE_PRESTAMO = 7;
     static final long MULTA_POR_DIA = 1000L;
 
@@ -32,9 +33,7 @@ public class PrestamoService {
     public Prestamo registrarPrestamo(Long usuarioId, Long materialId, LocalDate fechaPrestamo) {
         usuarioRepository.buscarPorId(usuarioId)
                 .orElseThrow(() -> new RecursoNoEncontradoException("Usuario no encontrado: " + usuarioId));
-        if (prestamoRepository.contarActivosPorUsuario(usuarioId) >= 3) {
-            throw new LimitePrestamosExcedidoException("El usuario ya tiene 3 préstamos activos");
-        }
+        verificarLimiteDePrestamos(usuarioId);
         Material material = materialRepository.buscarPorId(materialId)
                 .orElseThrow(() -> new RecursoNoEncontradoException("Material no encontrado: " + materialId));
         if (!material.estaDisponible()) {
@@ -54,5 +53,12 @@ public class PrestamoService {
                 .orElseThrow(() -> new RecursoNoEncontradoException("Préstamo no encontrado: " + prestamoId));
         long diasDeRetraso = ChronoUnit.DAYS.between(prestamo.getFechaVencimiento(), fechaDevolucion);
         return diasDeRetraso > 0 ? diasDeRetraso * MULTA_POR_DIA : 0L;
+    }
+
+    private void verificarLimiteDePrestamos(Long usuarioId) {
+        if (prestamoRepository.contarActivosPorUsuario(usuarioId) >= LIMITE_PRESTAMOS_ACTIVOS) {
+            throw new LimitePrestamosExcedidoException(
+                    "El usuario ya tiene " + LIMITE_PRESTAMOS_ACTIVOS + " préstamos activos");
+        }
     }
 }
