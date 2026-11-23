@@ -8,8 +8,8 @@
 | Nombre | Plan de pruebas formal y primeros tests unitarios de BiblioUni |
 | Versión | 1.0 |
 | Fecha | 2026-11-21 |
-| Responsable del plan | [Nombre del estudiante] |
-| Aprueba | [Nombre del docente] |
+| Responsable del plan | [Carlos Julio Portilla Martinez] |
+| Aprueba | [Willian Artuto Gil Rativa] |
 | Repositorio | https://github.com/Carlos00692/pruebas |
 | Documentos relacionados | `estrategia.md` y `escenarios.md` (Unidad 1), `casos_de_prueba.md` (Unidad 2) |
 
@@ -124,8 +124,8 @@ Un caso aprueba cuando el resultado obtenido coincide con el esperado. Falla cua
 
 | Rol | Responsable | Dedicación estimada |
 |---|---|---|
-| Diseñador y ejecutor de pruebas | [Nombre del estudiante] | 10 horas |
-| Revisor | [Nombre del docente] | Revisión del Pull Request |
+| Diseñador y ejecutor de pruebas | [Carlos Julio Portilla Martinez] | 10 horas |
+| Revisor | [Willian Artuto Gil Rativa] | Revisión del Pull Request |
 
 ## 11. Tareas, esfuerzo y cronograma
 
@@ -157,7 +157,7 @@ Prioridad = probabilidad (1 a 3) × impacto (1 a 3). Un puntaje de 6 o más es r
 
 | Versión | Fecha | Cambio | Autor |
 |---|---|---|---|
-| 1.0 | 2026-11-21 | Versión inicial | [Nombre del estudiante] |
+| 1.0 | 2026-11-21 | Versión inicial | [Carlos Julio Portilla Martinez] |
 
 Todo cambio en alcance, criterios o riesgos se registra en esta tabla y se confirma con un commit con prefijo `docs:`.
 
@@ -165,5 +165,5 @@ Todo cambio en alcance, criterios o riesgos se registra en esta tabla y se confi
 
 | Rol | Nombre | Firma | Fecha |
 |---|---|---|---|
-| Responsable | [Nombre del estudiante] | | |
-| Aprueba | [Nombre del docente] | | |
+| Responsable | [Carlos Julio Portilla Martinez] | | |
+| Aprueba | [Willian Artuto Gil Rativa] | | |

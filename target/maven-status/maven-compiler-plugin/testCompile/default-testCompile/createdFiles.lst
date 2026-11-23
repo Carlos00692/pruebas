@@ -1,0 +1,4 @@
+com\bibliouni\BibliouniApplicationTests.class
+com\bibliouni\servicio\MaterialServiceTest.class
+com\bibliouni\servicio\PrestamoServiceTest.class
+com\bibliouni\servicio\UsuarioServiceTest.class

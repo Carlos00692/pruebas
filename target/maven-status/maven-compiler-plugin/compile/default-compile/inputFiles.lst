@@ -1,0 +1,13 @@
+C:\Users\USER\Documents\PruebasSoftware\docs\pruebas\src\main\java\com\bibliouni\BibliouniApplication.java
+C:\Users\USER\Documents\PruebasSoftware\docs\pruebas\src\main\java\com\bibliouni\excepcion\LimitePrestamosExcedidoException.java
+C:\Users\USER\Documents\PruebasSoftware\docs\pruebas\src\main\java\com\bibliouni\excepcion\MaterialNoDisponibleException.java
+C:\Users\USER\Documents\PruebasSoftware\docs\pruebas\src\main\java\com\bibliouni\excepcion\RecursoNoEncontradoException.java
+C:\Users\USER\Documents\PruebasSoftware\docs\pruebas\src\main\java\com\bibliouni\modelo\Material.java
+C:\Users\USER\Documents\PruebasSoftware\docs\pruebas\src\main\java\com\bibliouni\modelo\Prestamo.java
+C:\Users\USER\Documents\PruebasSoftware\docs\pruebas\src\main\java\com\bibliouni\modelo\Usuario.java
+C:\Users\USER\Documents\PruebasSoftware\docs\pruebas\src\main\java\com\bibliouni\repositorio\MaterialRepository.java
+C:\Users\USER\Documents\PruebasSoftware\docs\pruebas\src\main\java\com\bibliouni\repositorio\PrestamoRepository.java
+C:\Users\USER\Documents\PruebasSoftware\docs\pruebas\src\main\java\com\bibliouni\repositorio\UsuarioRepository.java
+C:\Users\USER\Documents\PruebasSoftware\docs\pruebas\src\main\java\com\bibliouni\servicio\MaterialService.java
+C:\Users\USER\Documents\PruebasSoftware\docs\pruebas\src\main\java\com\bibliouni\servicio\PrestamoService.java
+C:\Users\USER\Documents\PruebasSoftware\docs\pruebas\src\main\java\com\bibliouni\servicio\UsuarioService.java
